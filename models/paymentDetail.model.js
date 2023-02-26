@@ -3,15 +3,12 @@ const mongoose = require("mongoose");
 
 
 const paymentDetailSchema = mongoose.Schema({
-    first_name: { type: String, required: true },
-    last_name: { type: String, required: true },
-    mobile_number: { type: Number, required: true },
-    country: { type: String, required: true },
-    address: { type: String, required: true },
-    city: { type: String, required: true },
-    postcode : { type: Number, required: true },
-    
-    userID: { type: Number, required: false }
+    name_on_card: { type: String },
+    card_number: { type: String },
+    month: { type: Number },
+    year: { type: Number },
+    security_code: { type: Number },
+    userID: { type: Number }
 }, {
     versionKey: false
 });

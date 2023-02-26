@@ -6,18 +6,18 @@ const sofaRouter = express.Router();
 
 
 // ----------------- SOFAS DATA GET REQUEST ----------------- //
-/*
-sofaRouter.get("/", async (request, response) => {
-    const query = request.query;
+
+sofaRouter.get("/:id", async (request, response) => {
+    const ID = request.params.id;
 
     try {
-        const data = await SofaModel.find(query);
+        const data = await SofaModel.find({ _id: ID });
         response.send(data);
     } catch (error) {
         response.send({ "Message": "Cannot able to get the sofas data", "Error": error.message });
     }
 });
-*/
+
 
 // ----------------- SOFAS DATA GET REQUEST ----------------- //
 // sort, filter, search, pagination
@@ -26,7 +26,7 @@ sofaRouter.get("/", async (request, response) => {
 
     try {
         const page = parseInt(request.query.page) - 1 || 0;
-        const limit = parseInt(request.query.limit) || 5;
+        const limit = parseInt(request.query.limit) || 10;
         const search = request.query.search || "";
         let sort = request.query.sort || "rating";
         let brand = request.query.brand || "All";

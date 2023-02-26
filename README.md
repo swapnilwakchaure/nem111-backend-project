@@ -56,6 +56,7 @@ filtering with pagination
     "lowprice": 43299,
     "highprice": 60999,
     "rating": 4.1,
+    "quantity": 1,
     "id": 1
 }
 ```
@@ -113,6 +114,8 @@ if (login success) {
 
 
 #### ADD TO CART URL
+
+get request: `https://vast-puce-mussel-tie.cyclic.app/carts`
 
 post request: `http://localhost:8080/carts/addtocart`
 

@@ -8,8 +8,8 @@ const authenticate = (request, response, next) => {
         let decoded = jwt.verify(token, "auth");
 
         if (decoded) {
-            const useID = decoded.userID;
-            request.body.userID = useID;
+            const userID = decoded.userID;
+            request.body.userID = userID;
             next();
         } else {
             response.send("You are not authorized person");

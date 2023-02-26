@@ -14,6 +14,7 @@ const addtocartSchema = mongoose.Schema({
     highprice: { type: Number },
     rating: { type: Number },
     id: { type: Number },
+    quantity: { type: Number },
     userID: { type: String }
 }, {
     versionKey: false

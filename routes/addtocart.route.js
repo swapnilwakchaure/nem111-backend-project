@@ -46,5 +46,19 @@ cartRouter.delete("/delete/:id", async (request, response) => {
 });
 
 
+// ---------------- CART DATA UPDATE REQUEST ---------------- //
+cartRouter.patch("/update/:id", async (request, response) => {
+    const ID = request.params.id;
+    const payload = request.body;
+
+    try {
+        await CartModel.findByIdAndUpdate({ _id: ID }, payload);
+        response.send({ "Message": `Cart Item of id: ${ID} is successfully updated from cart` });
+    } catch (error) {
+        response.send({ "Message": "Cannot able to update the cart data", "Error": error.message });
+    }
+});
+
+
 
 module.exports = { cartRouter };

@@ -12,6 +12,7 @@ const { authRouter } = require("./routes/auth.route");
 const { authenticate } = require("./middlewares/auth.middleware");
 const { cartRouter } = require('./routes/addtocart.route');
 const { paymentRouter } = require("./routes/payment.route");
+const { addressRouter } = require('./routes/address.route');
 
 const app = express();
 
@@ -26,9 +27,10 @@ app.get("/", (request, response) => {
 app.use("/sofas", sofaRouter);
 app.use("/dress", dressRouter);
 app.use("/users", authRouter);
-// app.use(authenticate);
+app.use(authenticate);
 app.use("/carts", cartRouter);
-app.use("/paymentdetails", paymentRouter);
+app.use("/address", addressRouter);
+app.use("/payment", paymentRouter);
 
 
 
