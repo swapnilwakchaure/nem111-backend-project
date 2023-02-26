@@ -20,6 +20,18 @@ authRouter.get("/", async (request, response) => {
     }
 });
 
+// -------------------- USERS DATA GET REQUEST -------------------- //
+authRouter.get("/:id", async (request, response) => {
+    const ID = request.params.id;
+
+    try {
+        const users = await AuthModel.find({ _id: ID });
+        response.send(users);
+    } catch (error) {
+        response.send({ "Message": "Cannot able to get the users data", "Error": error.message });
+    }
+});
+
 
 // -------------------- USER REGISTRATION POST REQUEST -------------------- //
 authRouter.post("/register", async (request, response) => {
@@ -91,6 +103,20 @@ authRouter.delete("/delete/:id", async (request, response) => {
         response.send({ "Message": `Cannot able to delete the users data of user id: ${ID}`, "Error": error.message });
     }
 });
+
+
+authRouter.patch("/update/:id", async (req, res) => {
+    const userId = req.params.id;
+    const payload=req.body;
+    try{
+      await AuthModel.findByIdAndUpdate({_id: userId}, payload)
+          res.status(200).send([{"msg":"Status changed"}])
+    }
+    catch(err){
+      res.status(500).send([{"msg":"something went wrong","err":err}])
+    }
+  });
+
 
 
 
