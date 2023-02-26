@@ -109,3 +109,11 @@ if (login success) {
 } else {
     return login failed;
 }
+
+
+
+#### ADD TO CART URL
+
+post request: `http://localhost:8080/carts/addtocart`
+
+get request: `http://localhost:8080/carts`

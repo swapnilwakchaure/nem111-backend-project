@@ -26,7 +26,7 @@ app.get("/", (request, response) => {
 app.use("/sofas", sofaRouter);
 app.use("/dress", dressRouter);
 app.use("/users", authRouter);
-app.use(authenticate);
+// app.use(authenticate);
 app.use("/carts", cartRouter);
 app.use("/paymentdetails", paymentRouter);
 
