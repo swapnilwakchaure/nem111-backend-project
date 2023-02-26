@@ -25,7 +25,7 @@ authRouter.get("/:id", async (request, response) => {
     const ID = request.params.id;
 
     try {
-        const users = await AuthModel.find({ _id: ID });
+        const users = await AuthModel.findById(ID);
         response.send(users);
     } catch (error) {
         response.send({ "Message": "Cannot able to get the users data", "Error": error.message });

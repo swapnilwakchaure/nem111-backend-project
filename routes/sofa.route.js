@@ -11,7 +11,7 @@ sofaRouter.get("/:id", async (request, response) => {
     const ID = request.params.id;
 
     try {
-        const data = await SofaModel.find({ _id: ID });
+        const data = await SofaModel.findById(ID);
         response.send(data);
     } catch (error) {
         response.send({ "Message": "Cannot able to get the sofas data", "Error": error.message });
