@@ -1,4 +1,5 @@
 const express = require("express");
+const { JsonWebTokenError } = require("jsonwebtoken");
 
 const { CartModel } = require("../models/addtocart.model");
 
@@ -10,7 +11,7 @@ const cartRouter = express();
 cartRouter.get("/", async (request, response) => {
     const query = request.query;
     const token = request.headers.authorization;
-    let decoded = jwt.verify(token, "auth");
+    let decoded = JsonWebTokenError.verify(token, "auth");
     const userID = decoded.userID;
 
     try {
