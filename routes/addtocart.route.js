@@ -10,12 +10,9 @@ const cartRouter = express();
 // ---------------- GET ALL CART DATA GET REQUEST ---------------- //
 cartRouter.get("/", async (request, response) => {
     const query = request.query;
-    const token = request.headers.authorization;
-    let decoded = JsonWebTokenError.verify(token, "auth");
-    const ID = decoded.userID;
 
     try {
-        const cartdata = await CartModel.find({userID:ID});
+        const cartdata = await CartModel.find(query);
         response.send(cartdata);
     } catch (error) {
         response.send({ "Message": "Cannot able to get the cart data", "Error": error.message });
