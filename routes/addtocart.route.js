@@ -1,4 +1,5 @@
 const express = require("express");
+const { JsonWebTokenError } = require("jsonwebtoken");
 
 const { CartModel } = require("../models/addtocart.model");
 
@@ -10,11 +11,11 @@ const cartRouter = express();
 cartRouter.get("/", async (request, response) => {
     const query = request.query;
     const token = request.headers.authorization;
-    let decoded = jwt.verify(token, "auth");
-    const userID = decoded.userID;
+    let decoded = JsonWebTokenError.verify(token, "auth");
+    const ID = decoded.userID;
 
     try {
-        const cartdata = await CartModel.find({userID});
+        const cartdata = await CartModel.find({userID:ID});
         response.send(cartdata);
     } catch (error) {
         response.send({ "Message": "Cannot able to get the cart data", "Error": error.message });
