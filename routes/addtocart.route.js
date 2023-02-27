@@ -12,10 +12,10 @@ cartRouter.get("/", async (request, response) => {
     const query = request.query;
     const token = request.headers.authorization;
     let decoded = JsonWebTokenError.verify(token, "auth");
-    const userID = decoded.userID;
+    const ID = decoded.userID;
 
     try {
-        const cartdata = await CartModel.find({userID});
+        const cartdata = await CartModel.find({userID:ID});
         response.send(cartdata);
     } catch (error) {
         response.send({ "Message": "Cannot able to get the cart data", "Error": error.message });
